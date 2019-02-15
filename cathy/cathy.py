@@ -50,11 +50,14 @@ class ChattyCathy:
                 return
 
             print("Message: " + str(message.content))
+            
+            def findWholeWord(w):
+                return re.compile(r'\b({0})\b'.format(w), flags=re.IGNORECASE).search
 
             if message.content.startswith(BOT_PREFIX):
                 # Pass on to rest of the client commands
                 yield from self.discord_client.process_commands(message)
-            else:
+            elif findWholeWord(self.discord_client.user.name)(message.content):
                 aiml_response = self.aiml_kernel.respond(message.content)
                 yield from self.discord_client.send_typing(message.channel)
                 yield from asyncio.sleep(random.randint(1,3))
