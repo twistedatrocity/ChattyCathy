@@ -10,11 +10,84 @@
 
         <!-- Template is the response to the pattern -->
         <!-- This learn an aiml file -->
+		<!-- A.L.I.C.E. AIML File Order
+		The A.L.I.C.E. AIML files in aiml-en-us-foundation-alice should be loaded in the following order:
+		First load the Safe reduction files reducation0.safe.aiml,...,reduction4.safe.aiml and reductions.update.aiml.
+		Second, load the Mindpixel files mp0.aiml,...,mp6.aiml.
+		Then load all remaining AIML files.
+		Pandorabots will always load the file update.aiml as the last file.
+-->
         <template>
-            <learn>aiml/*/*</learn>
             <!-- All aiml files are relative to the run dir and must be subdirs,
                  E.g. ./aiml/alice/one.aiml, ./aiml/custom/mine.aiml -->
-
+			<learn>aiml/alice/reduction0.safe.aiml</learn>
+			<learn>aiml/alice/reduction1.safe.aiml</learn>
+			<learn>aiml/alice/reduction2.safe.aiml</learn>
+			<learn>aiml/alice/reduction3.safe.aiml</learn>
+			<learn>aiml/alice/reduction4.safe.aiml</learn>
+			<learn>aiml/alice/reduction.names.aiml</learn>
+			<learn>aiml/alice/reductions-update.aiml</learn>
+			<learn>aiml/alice/mp0.aiml</learn>
+			<learn>aiml/alice/mp1.aiml</learn>
+			<learn>aiml/alice/mp2.aiml</learn>
+			<learn>aiml/alice/mp3.aiml</learn>
+			<learn>aiml/alice/mp4.aiml</learn>
+			<learn>aiml/alice/mp5.aiml</learn>
+			<learn>aiml/alice/mp6.aiml</learn>
+			<learn>aiml/alice/ai.aiml</learn>
+			<learn>aiml/alice/alice.aiml</learn>
+			<learn>aiml/alice/astrology.aiml</learn>
+			<learn>aiml/alice/atomic.aiml</learn>
+			<learn>aiml/alice/badanswer.aiml</learn>
+			<learn>aiml/alice/biography.aiml</learn>
+			<learn>aiml/alice/bot.aiml</learn>
+			<learn>aiml/alice/bot_profile.aiml</learn>
+			<learn>aiml/alice/client.aiml</learn>
+			<learn>aiml/alice/client_profile.aiml</learn>
+			<learn>aiml/alice/computers.aiml</learn>
+			<learn>aiml/alice/continuation.aiml</learn>
+			<learn>aiml/alice/date.aiml</learn>
+			<learn>aiml/alice/default.aiml</learn>
+			<learn>aiml/alice/drugs.aiml</learn>
+			<learn>aiml/alice/emotion.aiml</learn>
+			<learn>aiml/alice/food.aiml</learn>
+			<learn>aiml/alice/geography.aiml</learn>
+			<learn>aiml/alice/gossip.aiml</learn>
+			<learn>aiml/alice/history.aiml</learn>
+			<learn>aiml/alice/humor.aiml</learn>
+			<learn>aiml/alice/imponderables.aiml</learn>
+			<learn>aiml/alice/inquiry.aiml</learn>
+			<learn>aiml/alice/interjection.aiml</learn>
+			<learn>aiml/alice/iu.aiml</learn>
+			<learn>aiml/alice/junktest.text</learn>
+			<learn>aiml/alice/knowledge.aiml</learn>
+			<learn>aiml/alice/literature.aiml</learn>
+			<learn>aiml/alice/loebner10.aiml</learn>
+			<learn>aiml/alice/money.aiml</learn>
+			<learn>aiml/alice/movies.aiml</learn>
+			<learn>aiml/alice/music.aiml</learn>
+			<learn>aiml/alice/numbers.aiml</learn>
+			<learn>aiml/alice/personality.aiml</learn>
+			<learn>aiml/alice/phone.aiml</learn>
+			<learn>aiml/alice/pickup.aiml</learn>
+			<learn>aiml/alice/politics.aiml</learn>
+			<learn>aiml/alice/primeminister.aiml</learn>
+			<learn>aiml/alice/primitive-math.aiml</learn>
+			<learn>aiml/alice/psychology.aiml</learn>
+			<learn>aiml/alice/pyschology.aiml</learn>
+			<learn>aiml/alice/religion.aiml</learn>
+			<learn>aiml/alice/salutations.aiml</learn>
+			<learn>aiml/alice/science.aiml</learn>
+			<learn>aiml/alice/sex.aiml</learn>
+			<learn>aiml/alice/sports.aiml</learn>
+			<learn>aiml/alice/stack.aiml</learn>
+			<learn>aiml/alice/stories.aiml</learn>
+			<learn>aiml/alice/that.aiml</learn>
+			<learn>aiml/alice/update_mccormick.aiml</learn>
+			<learn>aiml/alice/wallace.aiml</learn>
+			<learn>aiml/alice/xfind.aiml</learn>
+			<learn>aiml/custom/basic_chat.aiml</learn>
+			<learn>aiml/alice/update1.aiml</learn>
         </template>
 
     </category>
