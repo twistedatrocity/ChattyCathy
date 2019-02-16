@@ -72,7 +72,8 @@ class ChattyCathy:
         @asyncio.coroutine
         def on_message(message):
             BOT_NAME = self.discord_client.user.name
-            if message.author.bot or str(message.channel) != self.channel_name:
+            if message.author.bot or (str(message.channel) != self.channel_name) and (not str(message.channel).startswith("Direct Message")):
+                print("ALL Message: " + str(message.channel) + str(message.content))
                 return
 
             if message.content is None:
@@ -87,17 +88,24 @@ class ChattyCathy:
             if message.content.startswith(BOT_PREFIX):
                 # Pass on to rest of the client commands
                 yield from self.discord_client.process_commands(message)
-            elif self.rname != True:
+            elif self.rname != True or str(message.channel).startswith("Direct Message"):
+                # if no aiml response we don't want to cause an exception trying to send an empty http message
                 aiml_response = self.aiml_kernel.respond(message.content)
-                yield from self.discord_client.send_typing(message.channel)
-                yield from asyncio.sleep(random.randint(1,3))
-                yield from self.discord_client.send_message(message.channel, aiml_response)
+                if aiml_response:
+                   yield from self.discord_client.send_typing(message.channel)
+                   yield from asyncio.sleep(random.randint(1,3))
+                   yield from self.discord_client.send_message(message.channel, aiml_response)
             elif findWholeWord(BOT_NAME)(message.content):
                 nmsg = re.sub(BOT_NAME, '', message.content, flags=re.IGNORECASE)
                 aiml_response = self.aiml_kernel.respond(nmsg)
-                yield from self.discord_client.send_typing(message.channel)
-                yield from asyncio.sleep(random.randint(1,3))
-                yield from self.discord_client.send_message(message.channel, aiml_response)
+                if aiml_response:
+                   yield from self.discord_client.send_typing(message.channel)
+                   yield from asyncio.sleep(random.randint(1,3))
+                   yield from self.discord_client.send_message(message.channel, aiml_response)
+
+        #@self.discord_client.event
+        #@asyncio.coroutine
+        #def on_dm(message):
 
     def save(self):
         if os.path.isfile(self.brn):
