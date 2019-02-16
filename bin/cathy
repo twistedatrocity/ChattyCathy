@@ -10,6 +10,7 @@ import sys, getopt
 def main(argv):
    channel = ''
    token = ''
+   brn = ''
    rname = False
    ft = False
    fc = False
@@ -24,11 +25,12 @@ def main(argv):
    Options:
 	-c <channel>	Name of channel to chat in (required)
 	-t <token>	Bot's Discord API token (required)
+    -b brainfile	Brainfile to use for learning (optional)
 	-r 		Respond only when bot name mentioned (optional)
 	-h --help     Show this screen.
 	"""
    try:
-      opts, args = getopt.getopt(argv,"rc:t:",["channel=","token="])
+      opts, args = getopt.getopt(argv,"rc:t:b:",["channel=","token=","brain="])
    except getopt.GetoptError:
       print (help)
       sys.exit(2)
@@ -41,12 +43,14 @@ def main(argv):
       elif opt in ("-t", "--token"):
          token = arg
          ft = True
+      elif opt in ("-b", "--brain"):
+         brn = arg
 
    if fc != True or ft != True:
       print(help)
       sys.exit(2)
 
-   bot = ChattyCathy(channel, token, rname)
+   bot = ChattyCathy(channel, token, brn, rname)
    bot.run()
 
 if __name__ == "__main__":
