@@ -7,18 +7,59 @@ Usage:
   cathy <channel> <token>
 
 Options:
-  <channel>     Name of channel to chat in
-  <token>       Bot's Discord API token
-  -h --help     Show this screen.
+	-r 			Respond only when bot name mentioned (optional)
+	-c <channel>	Name of channel to chat in (required)
+	-t <token>	Bot's Discord API token (required)
+	-h --help     Show this screen.
 """
+import sys, getopt
 
-from docopt import docopt
 from cathy.cathy import ChattyCathy
 
-args = docopt(__doc__)
+#args = docopt(__doc__)
+import sys, getopt
 
-print('Channel: ', args['<channel>'])
-print('Token: ', args['<token>'])
+def main(argv):
+   channel = ''
+   token = ''
+   rname = False
+   ft = False
+   fc = False
+   help = """
+   Cathy.
 
-bot = ChattyCathy(args['<channel>'], args['<token>'])
-bot.run()
+   Discord chat bot using AIML artificial intelligence
+
+   Usage:
+    cathy -c <channel> -t <token> -r
+
+   Options:
+	-c <channel>	Name of channel to chat in (required)
+	-t <token>	Bot's Discord API token (required)
+	-r 		Respond only when bot name mentioned (optional)
+	-h --help     Show this screen.
+	"""
+   try:
+      opts, args = getopt.getopt(argv,"rc:t:",["channel=","token="])
+   except getopt.GetoptError:
+      print (help)
+      sys.exit(2)
+   for opt, arg in opts:
+      if opt == '-r':
+         rname = True
+      elif opt in ("-c", "--channel"):
+         channel = arg
+         fc = True
+      elif opt in ("-t", "--token"):
+         token = arg
+         ft = True
+
+   if fc != True or ft != True:
+      print(help)
+      sys.exit(2)
+
+   bot = ChattyCathy(channel, token, rname)
+   bot.run()
+
+if __name__ == "__main__":
+   main(sys.argv[1:])
