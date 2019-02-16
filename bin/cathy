@@ -30,7 +30,7 @@ def main(argv):
 	-h --help     Show this screen.
 	"""
    try:
-      opts, args = getopt.getopt(argv,"rc:t:b:",["channel=","token=","brain="])
+      opts, args = getopt.getopt(argv,"rc:t:b:o:",["channel=","token=","brain=","owner="])
    except getopt.GetoptError:
       print (help)
       sys.exit(2)
@@ -45,12 +45,14 @@ def main(argv):
          ft = True
       elif opt in ("-b", "--brain"):
          brn = arg
+      elif opt in ("-o", "--owner"):
+         owner = arg
 
    if fc != True or ft != True:
       print(help)
       sys.exit(2)
 
-   bot = ChattyCathy(channel, token, brn, rname)
+   bot = ChattyCathy(channel, token, brn, rname, owner)
    bot.run()
 
 if __name__ == "__main__":

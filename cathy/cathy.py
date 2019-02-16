@@ -13,11 +13,12 @@ BOT_PREFIX = ('?', '!')
 
 
 class ChattyCathy:
-    def __init__(self, channel_name, bot_token, brn, rname):
+    def __init__(self, channel_name, bot_token, brn, rname, oname):
         self.channel_name = channel_name
         self.token = bot_token
         self.brn = brn
         self.rname = rname
+        self.oname = oname
 
         # Load AIML kernel
         self.aiml_kernel = aiml.Kernel()
@@ -55,6 +56,9 @@ class ChattyCathy:
         def on_ready():
             BOT_NAME = self.discord_client.user.name
             self.aiml_kernel.setBotPredicate('name',BOT_NAME)
+            self.aiml_kernel.setBotPredicate('owner',self.oname)
+            self.aiml_kernel.setBotPredicate('master',self.oname)
+            self.aiml_kernel.setBotPredicate('admin',self.oname)
             print("Bot Online!")
             print("Name: {}".format(BOT_NAME))
             print("Channel: {}".format(self.channel_name))
