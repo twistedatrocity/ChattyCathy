@@ -5,6 +5,7 @@ import pkg_resources
 from discord.ext import commands
 import asyncio
 import aiml
+import re
 
 
 STARTUP_FILE = "std-startup.xml"
