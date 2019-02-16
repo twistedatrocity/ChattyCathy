@@ -1,17 +1,5 @@
 #!/usr/bin/env python
-"""Cathy.
 
-Discord chat bot using AIML artificial intelligence
-
-Usage:
-  cathy <channel> <token>
-
-Options:
-	-r 			Respond only when bot name mentioned (optional)
-	-c <channel>	Name of channel to chat in (required)
-	-t <token>	Bot's Discord API token (required)
-	-h --help     Show this screen.
-"""
 import sys, getopt
 
 from cathy.cathy import ChattyCathy
