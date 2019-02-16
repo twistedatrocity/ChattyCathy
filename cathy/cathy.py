@@ -43,7 +43,7 @@ class ChattyCathy:
                 print("Name Response Only Mode Active")
 
             print("ID: {}".format(self.discord_client.user.id))
-            yield from self.discord_client.change_presence(game=discord.Game(name='Chasing Azis with Stunbaton'))
+            yield from self.discord_client.change_presence(game=discord.Game(name='Chatting with Humans'))
 
         @self.discord_client.event
         @asyncio.coroutine
