@@ -27,6 +27,7 @@ def main(argv):
 	-t <token>	Bot's Discord API token (required)
     -b brainfile	Brainfile to use for learning (optional)
 	-r 		Respond only when bot name mentioned (optional)
+    -o      Set owner name of the bot (optional)
 	-h --help     Show this screen.
 	"""
    try:
