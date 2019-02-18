@@ -26,7 +26,6 @@
 			<learn>aiml/alice/reduction3.safe.aiml</learn>
 			<learn>aiml/alice/reduction4.safe.aiml</learn>
 			<learn>aiml/alice/reduction.names.aiml</learn>
-			<learn>aiml/alice/reductions-update.aiml</learn>
 			<learn>aiml/alice/mp0.aiml</learn>
 			<learn>aiml/alice/mp1.aiml</learn>
 			<learn>aiml/alice/mp2.aiml</learn>
@@ -86,8 +85,9 @@
 			<learn>aiml/alice/update_mccormick.aiml</learn>
 			<learn>aiml/alice/wallace.aiml</learn>
 			<learn>aiml/alice/xfind.aiml</learn>
-			<learn>aiml/custom/basic_chat.aiml</learn>
+			<learn>aiml/alice/reductions-update.aiml</learn>
 			<learn>aiml/alice/update1.aiml</learn>
+			<learn>aiml/custom/basic_chat.aiml</learn>
         </template>
 
     </category>
