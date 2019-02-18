@@ -42,16 +42,22 @@ Or download this package and install with setup.py
     Discord chat bot using AIML artificial intelligence
 
     Usage:
-      cathy <channel> <token>
+       cathy -c <channel> -t <token> -r
     
     Options:
-      <channel>     Name of channel to chat in (no hashtag)
-      <token>       Bot's Discord API token
-      -h --help     Show this screen.
+       -c <channel>   Name of channel to chat in (required)
+       -t <token>     Bot's Discord API token (required)
+       -b <brainfile> Brainfile to use for learning (optional)
+       -r             Respond only when bot name mentioned (optional)
+       -o             Set owner name of the bot (optional)
+       -h --help      Show this screen.
       
 ## Example Usage
 
-    cathy chat-with-cathy XXXXXXSECRETTOKENXXXXXXX
+    Basic:
+       cathy -c somechannel -t XXXXXXSECRETTOKENXXXXXXX
+    All:
+       cathy -c somechannel -t XXXXXXSECRETTOKENXXXXXXX -b /path/to/brain.file -r -o SomeName
 
 ## Contact
 
