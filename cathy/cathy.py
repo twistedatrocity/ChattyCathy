@@ -56,9 +56,26 @@ class ChattyCathy:
         def on_ready():
             BOT_NAME = self.discord_client.user.name
             self.aiml_kernel.setBotPredicate('name',BOT_NAME)
-            self.aiml_kernel.setBotPredicate('owner',self.oname)
             self.aiml_kernel.setBotPredicate('master',self.oname)
-            self.aiml_kernel.setBotPredicate('admin',self.oname)
+            self.aiml_kernel.setBotPredicate('botmaster','Sensai')
+            # more predicates can be modified and set below by uncommenting or adding new.
+            # self.aiml_kernel.setBotPredicate('gender','female')
+            # self.aiml_kernel.setBotPredicate('city','Theed')
+            # self.aiml_kernel.setBotPredicate('state','Naboo')
+            # self.aiml_kernel.setBotPredicate('country','Naboo')
+            # self.aiml_kernel.setBotPredicate('location','Theed Palace, Naboo')
+            # self.aiml_kernel.setBotPredicate('nationality','Nabooian')
+            # self.aiml_kernel.setBotPredicate('email','nowhere@nowhere.com')
+            # self.aiml_kernel.setBotPredicate('birthday','August 29, 1999')
+            # self.aiml_kernel.setBotPredicate('birthdate','August 29, 1999')
+            # self.aiml_kernel.setBotPredicate('birthplace','Theed')
+            # self.aiml_kernel.setBotPredicate('hero','Darth Vader')
+            # self.aiml_kernel.setBotPredicate('lastname','Amidala')
+            # self.aiml_kernel.setBotPredicate('fullname','Padme Amidala')
+            # self.aiml_kernel.setBotPredicate('father','Ruwee Naberrie')
+            # self.aiml_kernel.setBotPredicate('mother','Jobal Naberrie')
+            # self.aiml_kernel.setBotPredicate('sister','one sister')
+            # self.aiml_kernel.setBotPredicate('children','twins')
             print("Bot Online!")
             print("Name: {}".format(BOT_NAME))
             print("Channel: {}".format(self.channel_name))
@@ -91,17 +108,19 @@ class ChattyCathy:
             elif self.rname != True or str(message.channel).startswith("Direct Message"):
                 # if no aiml response we don't want to cause an exception trying to send an empty http message
                 aiml_response = self.aiml_kernel.respond(message.content)
-                if aiml_response:
-                   yield from self.discord_client.send_typing(message.channel)
-                   yield from asyncio.sleep(random.randint(1,3))
-                   yield from self.discord_client.send_message(message.channel, aiml_response)
+                if not aiml_response:
+                   aiml_response = "I don't have an answer for that"
+                yield from self.discord_client.send_typing(message.channel)
+                yield from asyncio.sleep(random.randint(1,3))
+                yield from self.discord_client.send_message(message.channel, aiml_response)
             elif findWholeWord(BOT_NAME)(message.content):
                 nmsg = re.sub(BOT_NAME, '', message.content, flags=re.IGNORECASE)
                 aiml_response = self.aiml_kernel.respond(nmsg)
-                if aiml_response:
-                   yield from self.discord_client.send_typing(message.channel)
-                   yield from asyncio.sleep(random.randint(1,3))
-                   yield from self.discord_client.send_message(message.channel, aiml_response)
+                if not aiml_response:
+                   aiml_response = "I don't have an answer for that"
+                yield from self.discord_client.send_typing(message.channel)
+                yield from asyncio.sleep(random.randint(1,3))
+                yield from self.discord_client.send_message(message.channel, aiml_response)
 
         #@self.discord_client.event
         #@asyncio.coroutine
